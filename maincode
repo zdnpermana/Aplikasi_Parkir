@@ -1,0 +1,48 @@
+package responsi2_parkir;
+import java.util.Scanner;
+public class Responsi2_parkir {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        float total_jamparkir, tarif_tot;
+        
+        System.out.print("No. Tiket: ");
+            int no_tik = input.nextInt();
+        
+        System.out.print("No. Kendaraan: ");
+            String no_ken = input.next();
+            
+        System.out.println("1. Motor");
+        System.out.println("2. Mobil");
+        System.out.print("Masukkan kode kendaraan: ");
+            int jenis = input.nextInt();
+        
+        System.out.print("Jam Masuk: ");
+            float jam_msk = input.nextInt();
+        
+        System.out.print("Jam Keluar: ");
+            float jam_klr = input.nextInt();
+            
+        total_jamparkir = jam_klr - jam_msk;
+        tarif_tot = total_jamparkir * 2000;    
+            
+        System.out.println("==============PRINT===============");
+        
+        System.out.println("No. Tiket: "+no_tik);
+        System.out.println("No. Kendaraan: "+no_ken);
+        
+        System.out.print("Jenis Kendaraan: ");
+        if (jenis == 1) {
+            System.out.println("Motor");
+        } else if (jenis == 2) {
+            System.out.println("Mobil");    
+        } else {
+            System.out.println(" Jenis kendaraan tidak terdaftar");
+        }
+        
+        System.out.println("Jam Masuk: "+jam_msk);
+        System.out.println("Jam Keluar: "+jam_klr);
+        System.out.println("Tarif: "+tarif_tot);
+        
+    }
+    
+}
