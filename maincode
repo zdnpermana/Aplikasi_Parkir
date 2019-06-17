@@ -1,48 +1,156 @@
 package responsi2_parkir;
+import java.util.ArrayList;
 import java.util.Scanner;
-public class Responsi2_parkir {
+public class fix2 {
+    
+    public static ArrayList<Integer> no_tik = new ArrayList<Integer>();
+    public static ArrayList<Integer> no_tik2 = new ArrayList<Integer>();
+    public static ArrayList<String> no_ken = new ArrayList<String>();
+    public static ArrayList<Integer> jenis = new ArrayList<Integer>();
+    public static ArrayList<Double> jam_msk = new ArrayList<Double>();
+    public static ArrayList<Double> jam_klr = new ArrayList<Double>();
+    
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        float total_jamparkir, tarif_tot;
-        
-        System.out.print("No. Tiket: ");
-            int no_tik = input.nextInt();
-        
-        System.out.print("No. Kendaraan: ");
-            String no_ken = input.next();
-            
-        System.out.println("1. Motor");
-        System.out.println("2. Mobil");
-        System.out.print("Masukkan kode kendaraan: ");
-            int jenis = input.nextInt();
-        
-        System.out.print("Jam Masuk: ");
-            float jam_msk = input.nextInt();
-        
-        System.out.print("Jam Keluar: ");
-            float jam_klr = input.nextInt();
-            
-        total_jamparkir = jam_klr - jam_msk;
-        tarif_tot = total_jamparkir * 2000;    
-            
-        System.out.println("==============PRINT===============");
-        
-        System.out.println("No. Tiket: "+no_tik);
-        System.out.println("No. Kendaraan: "+no_ken);
-        
-        System.out.print("Jenis Kendaraan: ");
-        if (jenis == 1) {
-            System.out.println("Motor");
-        } else if (jenis == 2) {
-            System.out.println("Mobil");    
-        } else {
-            System.out.println(" Jenis kendaraan tidak terdaftar");
-        }
-        
-        System.out.println("Jam Masuk: "+jam_msk);
-        System.out.println("Jam Keluar: "+jam_klr);
-        System.out.println("Tarif: "+tarif_tot);
+        menu();
         
     }
     
+    static void input(){
+        Scanner input = new Scanner(System.in);
+        Scanner input2 = new Scanner(System.in);   
+        String jawab;  
+           
+        
+        System.out.println("==============INPUT===============");    
+        System.out.print("No. Reciept        : ");
+            no_tik.add(input.nextInt());
+        
+        System.out.print("No. Vehicle        : ");
+            no_ken.add(input.next());
+            
+        System.out.println("1. Motorcycle");
+        System.out.println("2. Car");
+        System.out.print("Input vehicle code : ");
+            jenis.add(input.nextInt());
+        
+        System.out.print("Hour entry         : ");
+            jam_msk.add(input.nextDouble());
+            
+        
+            
+        System.out.println("==============PRINT===============");
+        
+        for (int i = 0; i < no_tik.size(); i++) {
+                
+        System.out.println("----------------------------------");
+        System.out.println("          PARKING RECEIPT         ");
+        System.out.println("----------------------------------");
+        System.out.println("No. Receipt    : "+(no_tik.get(i)));
+        System.out.print("Vehicle type   : ");
+        if ((jenis.get(i)) == 1) {
+            System.out.println("Motorcycle");
+        } else if ((jenis.get(i)) == 2) {
+            System.out.println("Car");    
+        } else {
+            System.out.println("Type of vehicle not registered");
+        }
+        System.out.println("No. Vehicle    : "+(no_ken.get(i)));
+        System.out.println("Hour entry     : "+(jam_msk.get(i)));
+        System.out.println("==================================");
+        }
+       
+        menu();
+
+        }
+        
+    
+    static void database(){
+        System.out.println("=================================");
+        System.out.println("          PARKING STATUS         ");
+        System.out.println("=================================");
+        
+        for (int i = 0; i < no_tik.size(); i++) {
+        System.out.println("No. Receipt    : "+(no_tik.get(i)));
+        System.out.print("Vehicle type   : ");
+        if ((jenis.get(i)) == 1) {
+            System.out.println("Motorcycle");
+        } else if ((jenis.get(i)) == 2) {
+            System.out.println("Car");    
+        } else {
+            System.out.println("Jenis kendaraan tidak terdaftar");
+        }
+        System.out.println("No. Vehicle    : "+(no_ken.get(i)));
+        System.out.println("Hour entry     : "+(jam_msk.get(i)));
+        System.out.println("==================================");
+        }
+        menu();
+        
+    }
+    
+    static void output(){
+        Scanner input = new Scanner(System.in);
+        Scanner input2 = new Scanner(System.in);
+        String jawab;
+        double total_jamparkir, tarif_tot;
+        
+        System.out.println("==============OUTPUT=============="); 
+        System.out.print("No. Recipt         : ");
+            no_tik.add(input.nextInt());
+
+        System.out.print("Hour out           : ");
+            jam_klr.add(input.nextDouble());
+            
+        
+        
+        for (int i = 0; i < no_tik.size(); i++) {
+        System.out.println("----------------------------------");
+        System.out.println("          PARKING RECEIPT         ");
+        System.out.println("----------------------------------");  
+        System.out.println("No. Receipt    : "+(no_tik.get(i)));
+        System.out.print("Vehicle type   : ");
+        if ((jenis.get(i)) == 1) {
+            System.out.println("Motorcycle");
+        } else if ((jenis.get(i)) == 2) {
+            System.out.println("Car");    
+        } else {
+            System.out.println("Type of vehicle not registered");
+        }
+        System.out.println("No. Vehicle    : "+(no_ken.get(i)));
+        System.out.println("Hour entry     : "+(jam_msk.get(i)));
+        System.out.println("Hour out       : "+(jam_klr.get(i)));
+        
+        total_jamparkir = (jam_klr.get(i)) - (jam_msk.get(i));
+        tarif_tot = total_jamparkir * 2000;
+        
+        System.out.println("Paid           : "+tarif_tot);
+        System.out.println("==================================");
+        System.out.println("     THANK YOU AND LUCKY ROAD!    ");
+       
+        }
+        menu();
+    }
+    
+    static void menu(){
+        System.out.println("===============MENU===============");
+        System.out.println("|   1. INPUT                     |");
+        System.out.println("|   2. PARKING                   |");
+        System.out.println("|   3. OUTPUT                    |");
+        System.out.println("|   4. EXIT                      |");
+        Scanner scan = new Scanner(System.in);
+        String choice = null;
+            choice = scan.nextLine();
+            switch (choice) {
+            case "1":
+                input();
+                break;
+            case "2":
+                database();
+                break;
+            case "3":
+                output();
+                break;
+            case "4":
+                break;
+            }
+    }
 }
